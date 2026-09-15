@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balya Niketon Senior Secondary School | Elite Junior College</title>
+    <!-- Google Fonts & FontAwesome Pro Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #0f172a;
+            --primary-light: #1e293b;
+            --accent: #d97706; /* Elite Gold */
+            --accent-glow: rgba(217, 119, 6, 0.4);
+            --secondary: #059669; /* Emerald Green */
+            --bg-body: #f8fafc;
+            --white: #ffffff;
+            --text-main: #334155;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Top Announcement Ticker Bar */
+        .top-bar {
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            color: var(--white);
+            font-size: 0.85rem;
+            padding: 8px 20px;
+            text-align: center;
+            border-bottom: 2px solid var(--accent);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .top-bar span {
+            color: var(--accent);
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        /* Premium Header & Glass Navbar */
+        header {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            position: fixed;
+            width: 100%;
+            top: 37px;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .navbar {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon-box {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 12px var(--accent-glow);
+        }
+
+        .logo h1 {
+            font-size: 1.2rem;
+            color: var(--primary);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            font-size: 0.75rem;
+            color: var(--accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--accent);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .header-btn {
+            background: var(--accent);
+            color: white;
+            padding: 10px 22px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px var(--accent-glow);
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .header-btn:hover {
+            transform: translateY(-2px);
+            background: #b45309;
+        }
+
+        /* Hero Section with School Background Image */
+        .hero {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.88), rgba(30, 41, 59, 0.82)), url('1000046831_2.jpg') no-repeat center center/cover;
+            min-height: 92vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 140px 20px 80px 20px;
+            position: relative;
+        }
+
+        .hero-badge {
+            background: rgba(217, 119, 6, 0.2);
+            border: 1px solid var(--accent);
+            color: #fcd34d;
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            display: inline-block;
+            margin-bottom: 20px;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        .hero-content h2 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            letter-spacing: -1px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero-content h2 span {
+            color: var(--accent);
+        }
+
+        .hero-content p {
+            font-size: 1.15rem;
+            max-width: 700px;
+            margin: 0 auto 35px auto;
+            color: #cbd5e1;
+            font-weight: 400;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: white;
+            padding: 14px 35px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: 0 10px 25px var(--accent-glow);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            background-color: #b45309;
+        }
+
+        .btn-secondary {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            color: white;
+            padding: 14px 35px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        /* Stats Bar */
+        .stats-container {
+            max-width: 1100px;
+            margin: -50px auto 0 auto;
+            position: relative;
+            z-index: 10;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            padding: 0 20px;
+        }
+
+        .stat-card {
+            background: var(--white);
+            padding: 30px 20px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+            border-bottom: 4px solid var(--accent);
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-card h3 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .stat-card p {
+            font-size: 0.9rem;
+            color: #64748b;
+            font-weight: 600;
+        }
+
+        /* General Layout Sections */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px auto;
+        }
+
+        .section-tag {
+            color: var(--accent);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            color: #64748b;
+            font-size: 1.05rem;
+        }
+
+        /* Streams Section */
+        .streams-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 35px;
+        }
+
+        .stream-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            border: 1px solid #e2e8f0;
+            transition: var(--transition);
+        }
+
+        .stream-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            border-color: var(--accent);
+        }
+
+        .stream-img-box {
+            height: 220px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stream-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .stream-card:hover .stream-img-box img {
+            transform: scale(1.05);
+        }
+
+        .stream-tag-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(5px);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .stream-body {
+            padding: 30px;
+        }
+
+        .stream-body h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .stream-body p {
+            color: #64748b;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        /* Facilities Section */
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 40px;
+        }
+
+        .facility-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            border: 1px solid #e2e8f0;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .facility-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .facility-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(217, 119, 6, 0.1);
+            color: var(--accent);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            margin-bottom: 25px;
+        }
+
+        .facility-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .facility-card p {
+            color: #64748b;
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+        }
+
+        .facility-img-preview {
+            height: 180px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-top: 15px;
+        }
+
+        .facility-img-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Teachers Faculty Section */
+        .faculty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .faculty-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 35px 25px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            border: 1px solid #e2e8f0;
+            transition: var(--transition);
+        }
+
+        .faculty-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .faculty-avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            margin: 0 auto 20px auto;
+            overflow: hidden;
+            border: 4px solid #f1f5f9;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+
+        .faculty-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .faculty-card h4 {
+            font-size: 1.2rem;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .faculty-card span {
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        /* Why Join Us Elite Showcase */
+        .why-section {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 110px 20px;
+            position: relative;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .why-box {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            transition: var(--transition);
+        }
+
+        .why-box:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .why-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(217, 119, 6, 0.2);
+            color: #fcd34d;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            margin-bottom: 25px;
+        }
+
+        .why-box h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .why-box p {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+        }
+
+        /* Universal Photo Upload Customizer Tool */
+        .upload-wrapper {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .custom-file-upload {
+            background: #f1f5f9;
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: var(--transition);
+            border: 1px solid #cbd5e1;
+        }
+
+        .custom-file-upload:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .hidden-file-input {
+            display: none;
+        }
+
+        /* Premium Footer */
+        footer {
+            background: #090d16;
+            color: #94a3b8;
+            padding: 80px 20px 30px 20px;
+            border-top: 1px solid #1e293b;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .footer-col p, .footer-col li {
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            list-style: none;
+        }
+
+        .footer-col a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-col a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            border-top: 1px solid #1e293b;
+            padding-top: 25px;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        /* Modal Popup Window for Admissions */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-box {
+            background: white;
+            width: 100%;
+            max-width: 500px;
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            position: relative;
+            transform: scale(0.95);
+            transition: var(--transition);
+        }
+
+        .modal-overlay.active .modal-box {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #f1f5f9;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 1rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        .modal-box h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .modal-box p {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-glow);
+        }
+
+        .submit-btn {
+            background: var(--accent);
+            color: white;
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .submit-btn:hover {
+            background: #b45309;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Ticker Bar -->
+    <div class="top-bar">
+        <i class="fa-solid fa-bullhorn" style="color: var(--accent);"></i>
+        Admissions Open for Classes 11th & 12th (Academic Session) — <span>Limited Seats Available</span>
+    </div>
+
+    <!-- Header & Glass Navigation -->
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <div class="logo-icon-box">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div>
+                    <h1>Balya Niketon</h1>
+                    <span>Senior Secondary School</span>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#streams">Streams</a></li>
+                <li><a href="#facilities">Facilities</a></li>
+                <li><a href="#faculty">Faculty</a></li>
+                <li><a href="#why-us">Why Us</a></li>
+            </ul>
+            <button class="header-btn" onclick="toggleModal(true)">Apply For Admission</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">Excellence in Junior College Education</div>
+            <h2>Welcome to Balya Niketon <span>Senior Secondary School</span></h2>
+            <p>Empowering minds with world-class academics, elite mentorship, and unmatched focus for Class 11th & 12th success.</p>
+            <div class="hero-buttons">
+                <a href="#why-us" class="btn-primary"><i class="fa-solid fa-compass"></i> Discover Why Join Us</a>
+                <button class="btn-secondary" onclick="toggleModal(true)"><i class="fa-solid fa-file-pen"></i> Enquire Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- High-End Stats Ribbon -->
+    <div class="stats-container">
+        <div class="stat-card">
+            <h3>100%</h3>
+            <p>Board Examination Success</p>
+        </div>
+        <div class="stat-card">
+            <h3>3 Elite</h3>
+            <p>Academic Streams Offered</p>
+        </div>
+        <div class="stat-card">
+            <h3>Zero</h3>
+            <p>External Tuitions Needed</p>
+        </div>
+        <div class="stat-card">
+            <h3>Top</h3>
+            <p>Expert Faculty Support</p>
+        </div>
+    </div>
+
+    <!-- Academic Streams Section -->
+    <section id="streams" class="container">
+        <div class="section-header">
+            <span class="section-tag">Academic Excellence</span>
+            <h2>Our Specialized Streams</h2>
+            <p>Tailored curriculum designed for Classes 11 and 12 to secure top university placements and board merits.</p>
+        </div>
+        <div class="streams-grid">
+            <!-- Science Stream -->
+            <div class="stream-card">
+                <div class="stream-img-box" id="stream1-preview">
+                    <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=700&q=80" alt="Science Stream">
+                    <span class="stream-tag-badge">PCM / PCB</span>
+                </div>
+                <div class="stream-body">
+                    <h3>Science Stream</h3>
+                    <p>Delivers thorough analytical rigor in Physics, Chemistry, Mathematics, and Biology with high-end practical laboratory integrations.</p>
+                    <div class="upload-wrapper">
+                        <label class="custom-file-upload"><i class="fa-solid fa-camera"></i> Change Photo</label>
+                        <input type="file" class="hidden-file-input" accept="image/*" onchange="previewImage(event, 'stream1-preview')">
+                    </div>
+                </div>
+            </div>
+            <!-- Commerce Stream -->
+            <div class="stream-card">
+                <div class="stream-img-box" id="stream2-preview">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=700&q=80" alt="Commerce Stream">
+                    <span class="stream-tag-badge">Business & Finance</span>
+                </div>
+                <div class="stream-body">
+                    <h3>Commerce Stream</h3>
+                    <p>Builds robust frameworks in Accountancy, Business Studies, Economics, and Financial Literacy for corporate and financial leadership.</p>
+                    <div class="upload-wrapper">
+                        <label class="custom-file-upload"><i class="fa-solid fa-camera"></i> Change Photo</label>
+                        <input type="file" class="hidden-file-input" accept="image/*" onchange="previewImage(event, 'stream2-preview')">
+                    </div>
+                </div>
+            </div>
+            <!-- Arts Stream -->
+            <div class="stream-card">
+                <div class="stream-img-box" id="stream3-preview">
+                    <img src="https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=700&q=80" alt="Arts Stream">
+                    <span class="stream-tag-badge">Humanities</span>
+                </div>
+                <div class="stream-body">
+                    <h3>Arts / Humanities Stream</h3>
+                    <p>Fosters critical inquiry, socio-political awareness, and literary mastery through History, Political Science, and Sociology.</p>
+                    <div class="upload-wrapper">
+                        <label class="custom-file-upload"><i class="fa-solid fa-camera"></i> Change Photo</label>
+                        <input type="file" class="hidden-file-input" accept="image/*" onchange="previewImage(event, 'stream3-preview')">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Campus Facilities Section -->
+    <section id="facilities" class="container" style="background: #ffffff; border-radius: 30px; border: 1px solid #e2e8f0; padding: 80px 40px; margin-bottom: 60px;">
+        <div class="section-header">
+            <span class="section-tag">World-Class Infrastructure</span>
+            <h2>Campus & Learning Facilities</h2>
+            <p>Designed with state-of-the-art infrastructure to promote absolute focus, research, and holistic growth.</p>
+        </div>
+        <div class="facilities-grid">
+            <div class="facility-card">
+                <div class="facility-icon">
+                    <i class="fa-solid fa-flask-vial"></i>
+                </div>
+                <h3>Advanced Laboratories</h3>
+                <p>Fully equipped precision labs for Physics, Chemistry, Biology, and Computers, allowing students hands-on experiential learning to master concepts instantly.</p>
+                <div class="facility-img-preview" id="lab-preview">
+                    <img src="https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&w=600&q=80" alt="Laboratories">
+                </div>
+                <div class="upload-wrapper">
+                    <label class="custom-file-upload"><i class="fa-solid fa-camera"></i> Change Lab Photo</label>
+                    <input type="file" class="hidden-file-input" accept="image/*" onchange="previewImage(event, 'lab-preview')">
+                </div>
+            </div>
+            <div class="facility-card">
+                <div class="facility-icon">
+                    <i class="fa-solid fa-book-bookmark"></i>
+                </div>
+                <h3>Resource Library Center</h3>
+                <p>A quiet, expansive sanctuary stocked with thousands of premium academic volumes, competitive exam guides, and encyclopedias for deep study.</p>
+                <div class="facility-img-preview" id="lib-preview">
+                    <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=600&q=80" alt="Library">
+                </div>
+                <div class="upload-wrapper">
+                    <label class="custom-file-upload"><i class="fa-solid fa-camera"></i> Change Library Photo</label>
+                    <input type="file" class="hidden-file-input" accept="image/*" onchange="previewImage(event, 'lib-preview')">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expert Faculty Section -->
+    <section id="faculty" class="container">
+        <div class="section-header">
+            <span class="section-tag">Elite Mentorship</span>
+            <h2>Our Expert Faculty</h2>
+            <p>Dedicated scholars and educators committed to elevating student potential to maximum limits.</p>
+        </div>
+        <div class="faculty-grid">
+            <div class="faculty-card">
+                <div class="faculty-avatar" id="teacher1-preview">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80" alt="Teacher">
+                </div>
+                <h4>Dr. Anita Sharma</h4>
+                <span>HOD Science Department</span>
+                <div class="upload-wrapper">
+                    <label class="custom-file-upload"><i class="fa-solid fa-camera"></i> Photo</label>
+                    <input type="file" class="hidden-file-input" accept="image/*" onchange="previewImage(event, 'teacher1-preview')">
+                </div>
+            </div>
+            <div class="faculty-card">
+                <div class="faculty-avatar" id="teacher2-preview">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80" alt="Teacher">
+                </div>
+                <h4>Mr. Rajesh Verma</h4>
+                <span>Senior Commerce Mentor</span>
+                <div class="upload-wrapper">
+                    <label class="custom-file-upload"><i class="fa-solid fa-camera"></i> Photo</label>
+                    <input type="file" class="hidden-file-input" accept="image/*" onchange="previewImage(event, 'teacher2-preview')">
+                </div>
+            </div>
+            <div class="faculty-card">
+                <div class="faculty-avatar" id="teacher3-preview">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80" alt="Teacher">
+                </div>
+                <h4>Mrs. Sunita Rao</h4>
+                <span>Humanities Specialist</span>
+                <div class="upload-wrapper">
+                    <label class="custom-file-upload"><i class="fa-solid fa-camera"></i> Photo</label>
+                    <input type="file" class="hidden-file-input" accept="image/*" onchange="previewImage(event, 'teacher3-preview')">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Join Us Section -->
+    <section id="why-us" class="why-section">
+        <div class="section-header" style="margin-bottom: 50px;">
+            <span class="section-tag" style="color: #fcd34d;">The Competitive Edge</span>
+            <h2 style="color: white;">Why Should You Join Balya Niketon Junior College?</h2>
+            <p style="color: #cbd5e1;">Discover what makes us the premier choice for Class 11th and 12th students.</p>
+        </div>
+        <div class="why-grid">
+            <div class="why-box">
+                <div class="why-icon">
+                    <i class="fa-solid fa-award"></i>
+                </div>
+                <h3>The Best Education</h3>
+                <p>Our comprehensive framework ensures deep conceptual clarity, critical reasoning, and top-tier records in board exam achievements year after year.</p>
+            </div>
+            <div class="why-box">
+                <div class="why-icon">
+                    <i class="fa-solid fa-user-graduate"></i>
+                </div>
+                <h3>Best Support of Teachers</h3>
+                <p>We provide individualized attention, round-the-clock mentorship, and continuous tracking so no student is left behind in their academic growth.</p>
+            </div>
+            <div class="why-box">
+                <div class="why-icon">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <h3>No Need for Extra Tuitions</h3>
+                <p>With our rigorous classroom coaching, thorough doubt-clearing sessions, and structured practice modules, students require zero external or extra tuitions.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>Balya Niketon Senior Secondary School</h4>
+                <p>Premier Junior College (Classes 11th & 12th) dedicated to shaping future leaders through academic excellence and personal discipline.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <p><a href="#home">Home Dashboard</a></p>
+                <p><a href="#streams">Academic Streams</a></p>
+                <p><a href="#facilities">Campus Facilities</a></p>
+                <p><a href="#faculty">Expert Faculty</a></p>
+            </div>
+            <div class="footer-col">
+                <h4>Admissions Office</h4>
+                <p><i class="fa-solid fa-location-dot" style="color: var(--accent);"></i> Senior Secondary Campus, Classes 11 & 12</p>
+                <p><i class="fa-solid fa-envelope" style="color: var(--accent);"></i> admissions@balyaniketon.edu</p>
+                <p><i class="fa-solid fa-phone" style="color: var(--accent);"></i> +91 (Available on request)</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Balya Niketon Senior Secondary School (Junior College). All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Admission Inquiry Modal Popup -->
+    <div class="modal-overlay" id="admissionModal">
+        <div class="modal-box">
+            <button class="modal-close" onclick="toggleModal(false)"><i class="fa-solid fa-xmark"></i></button>
+            <h3>Admission Enquiry</h3>
+            <p>Fill out the form below to secure your registration for Classes 11th or 12th.</p>
+            <form onsubmit="handleFormSubmit(event)">
+                <div class="form-group">
+                    <label>Student Full Name</label>
+                    <input type="text" placeholder="Enter student name" required>
+                </div>
+                <div class="form-group">
+                    <label>Select Stream</label>
+                    <select required>
+                        <option value="">Choose Stream...</option>
+                        <option value="science">Science (PCM / PCB)</option>
+                        <option value="commerce">Commerce</option>
+                        <option value="arts">Arts / Humanities</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Contact Phone Number</label>
+                    <input type="tel" placeholder="Enter mobile number" required>
+                </div>
+                <button type="submit" class="submit-btn">Submit Application Enquiry</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript Interactions & Photo Upload Tool -->
+    <script>
+        function toggleModal(open) {
+            const modal = document.getElementById('admissionModal');
+            if(open) {
+                modal.classList.add('active');
+            } else {
+                modal.classList.remove('active');
+            }
+        }
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            alert('Thank you! Your admission enquiry has been successfully submitted to Balya Niketon Senior Secondary School.');
+            toggleModal(false);
+        }
+
+        function previewImage(event, targetId) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const container = document.getElementById(targetId);
+                    container.innerHTML = `<img src="${e.target.result}" alt="Uploaded Preview Image">`;
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+</body>
+</html>
