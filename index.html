@@ -7,7 +7,7 @@
     <!-- Google Fonts & FontAwesome Pro Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
         :root {
             --primary: #0f172a;
@@ -529,6 +529,87 @@
             margin-bottom: 15px;
         }
 
+        /* Photo Gallery Section (auto-loaded from GitHub /gallery folder) */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            aspect-ratio: 4 / 3;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+            border: 1px solid #e2e8f0;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-status {
+            grid-column: 1 / -1;
+            text-align: center;
+            color: #64748b;
+            padding: 20px;
+            font-weight: 600;
+        }
+
+        /* Lightbox for gallery images */
+        .lightbox-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(9, 13, 22, 0.92);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 3000;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition);
+            padding: 40px;
+        }
+
+        .lightbox-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .lightbox-overlay img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 12px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 25px;
+            right: 30px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: white;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
+
         /* Why Join Us Elite Showcase */
         .why-section {
             background: linear-gradient(135deg, var(--primary), var(--primary-light));
@@ -800,6 +881,7 @@
                 <li><a href="#streams">Streams</a></li>
                 <li><a href="#facilities">Facilities</a></li>
                 <li><a href="#faculty">Faculty</a></li>
+                <li><a href="#gallery">Gallery</a></li>
                 <li><a href="#why-us">Why Us</a></li>
             </ul>
             <button class="header-btn" onclick="toggleModal(true)">Apply For Admission</button>
@@ -978,6 +1060,18 @@
         </div>
     </section>
 
+    <!-- Photo Gallery Section (auto-populated from the /gallery folder in this GitHub repo) -->
+    <section id="gallery" class="container" style="background: #ffffff; border-radius: 30px; border: 1px solid #e2e8f0; padding: 80px 40px; margin-bottom: 60px;">
+        <div class="section-header">
+            <span class="section-tag">Campus Moments</span>
+            <h2>Photo Gallery</h2>
+            <p>Every image simply dropped into the <code>gallery</code> folder on GitHub shows up here automatically.</p>
+        </div>
+        <div class="gallery-grid" id="gallery-grid">
+            <p class="gallery-status">Loading gallery...</p>
+        </div>
+    </section>
+
     <!-- Why Join Us Section -->
     <section id="why-us" class="why-section">
         <div class="section-header" style="margin-bottom: 50px;">
@@ -1023,6 +1117,7 @@
                 <p><a href="#streams">Academic Streams</a></p>
                 <p><a href="#facilities">Campus Facilities</a></p>
                 <p><a href="#faculty">Expert Faculty</a></p>
+                <p><a href="#gallery">Photo Gallery</a></p>
             </div>
             <div class="footer-col">
                 <h4>Admissions Office</h4>
@@ -1065,6 +1160,12 @@
         </div>
     </div>
 
+    <!-- Lightbox for enlarged gallery images -->
+    <div class="lightbox-overlay" id="lightboxOverlay" onclick="closeLightbox(event)">
+        <button class="lightbox-close" onclick="closeLightbox(event)"><i class="fa-solid fa-xmark"></i></button>
+        <img id="lightboxImg" src="" alt="Gallery Preview">
+    </div>
+
     <!-- JavaScript Interactions & Photo Upload Tool -->
     <script>
         function toggleModal(open) {
@@ -1093,6 +1194,73 @@
                 reader.readAsDataURL(file);
             }
         }
+
+        /* =========================================================
+           AUTO GALLERY LOADER
+           -----------------------------------------------------------
+           Reads whatever image files exist in the "gallery" folder of
+           this GitHub repo via the GitHub Contents API, and renders
+           them here automatically. Just push new images into the
+           gallery folder in GitHub and refresh the site — no code
+           changes needed.
+
+           >>> EDIT THESE 3 VALUES to match your repo <<<
+        ========================================================= */
+        const GITHUB_USERNAME = "mranshurx";
+        const GITHUB_REPO     = "Bidya-niketon";
+        const GITHUB_BRANCH   = "main";
+        const GALLERY_FOLDER  = "gallery";
+
+        const IMAGE_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.webp', '.gif', '.avif'];
+
+        async function loadGallery() {
+            const grid = document.getElementById('gallery-grid');
+            const apiUrl = `https://api.github.com/repos/${GITHUB_USERNAME}/${GITHUB_REPO}/contents/${GALLERY_FOLDER}?ref=${GITHUB_BRANCH}`;
+
+            try {
+                const response = await fetch(apiUrl);
+
+                if (!response.ok) {
+                    if (response.status === 404) {
+                        grid.innerHTML = `<p class="gallery-status">No "gallery" folder found yet. Create one in GitHub and add some photos!</p>`;
+                    } else {
+                        grid.innerHTML = `<p class="gallery-status">Gallery is temporarily unavailable (GitHub API limit or network issue). Please refresh shortly.</p>`;
+                    }
+                    return;
+                }
+
+                const files = await response.json();
+
+                const images = files
+                    .filter(f => f.type === 'file' && IMAGE_EXTENSIONS.some(ext => f.name.toLowerCase().endsWith(ext)))
+                    .sort((a, b) => a.name.localeCompare(b.name));
+
+                if (images.length === 0) {
+                    grid.innerHTML = `<p class="gallery-status">No photos yet — add images to the "gallery" folder on GitHub to see them here.</p>`;
+                    return;
+                }
+
+                grid.innerHTML = images.map(img => `
+                    <div class="gallery-item" onclick="openLightbox('${img.download_url}')">
+                        <img src="${img.download_url}" alt="${img.name}" loading="lazy">
+                    </div>
+                `).join('');
+
+            } catch (err) {
+                grid.innerHTML = `<p class="gallery-status">Couldn't load the gallery right now. Please refresh the page.</p>`;
+            }
+        }
+
+        function openLightbox(src) {
+            document.getElementById('lightboxImg').src = src;
+            document.getElementById('lightboxOverlay').classList.add('active');
+        }
+
+        function closeLightbox(event) {
+            document.getElementById('lightboxOverlay').classList.remove('active');
+        }
+
+        document.addEventListener('DOMContentLoaded', loadGallery);
     </script>
 </body>
 </html>
